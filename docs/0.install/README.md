@@ -1,9 +1,3 @@
-# ubuntu
-
-1. Microsoft Store 에서 ubuntu 설치
-2. ubuntu 실행 후 아이디, 패스워드 설정
-
-
 # java
 
 설치
@@ -20,6 +14,14 @@ sudo apt install default-jdk
 java -version
 ```
 
+# curl
+
+설치
+
+```
+sudo apt install curl
+```
+
 # elasticsearch
 
 설치
@@ -31,29 +33,42 @@ sudo apt update
 sudo apt install elasticsearch
 ```
 
+실행
+
+```
+sudo systemctl enable elasticsearch
+sudo systemctl start elasticsearch
+curl -X GET localhost:9200
+```
+
 # 트러블슈팅
 
-### System has not been booted with systemd as init system (PID 1). Can't operate.
-
-> wsl2 환경이 아니라면 wsl2 환경으로 바꿔준다.
-
-1. 관리자 권한으로 Windows Powershell 실행
-2. 아래 명령어 실행
+### curl: (52) Empty reply from server
 
 ```
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+sudo vi /etc/elasticsearch/elasticsearch.yml
 ```
 
-3. 재부팅
-4. 버전 업데이트
+```
+# Enable security features
+xpack.security.enabled: false
 
-```
-wsl --set-version Ubuntu 2
+xpack.security.enrollment.enabled: false
+
+# Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agents
+xpack.security.http.ssl:
+  enabled: false
+  keystore.path: certs/http.p12
+
+# Enable encryption and mutual authentication between cluster nodes
+xpack.security.transport.ssl:
+  enabled: false
+  verification_mode: certificate
+  keystore.path: certs/transport.p12
+  truststore.path: certs/transport.p12
+# Create a new cluster with the current node only
+# Additional nodes can still join the cluster later
+cluster.initial_master_nodes: ["USER"]
 ```
 
-5. 확인
-
-```
-wsl --list --verbose
-```
+true 로 되어있는 4개 부분을 false 로 바꾼다.
