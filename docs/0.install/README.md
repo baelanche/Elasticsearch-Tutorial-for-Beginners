@@ -41,6 +41,23 @@ sudo systemctl start elasticsearch
 curl -X GET localhost:9200
 ```
 
+# kibana
+
+설치
+
+```
+sudo apt install kibana
+```
+
+실행
+
+```
+sudo systemctl enable kibana
+sudo systemctl start kibana
+```
+
+접속 : browser - http://localhost:5601
+
 # 트러블슈팅
 
 ### curl: (52) Empty reply from server
