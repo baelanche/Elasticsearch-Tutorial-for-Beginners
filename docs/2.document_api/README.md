@@ -151,3 +151,119 @@ op_type 을 지정해주면 result 값을 create 만 나올 수 있게 강제한
 ```
 
 이미 존재하는 문서에 대해 자동으로 update 하는 것을 방지한다.
+
+### 존재하지 않는 mapping 선언
+
+```
+POST dept/_doc/2
+{
+  "deptName": "software",
+  "id": 202311333,
+  "studentName": "hosu",
+  "gender": "male"
+}
+```
+
+index 생성할 때 지정하지 않았던 gender 매핑을 추가했다.
+
+response :
+
+```
+{
+  "_index": "dept",
+  "_id": "2",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 1,
+    "failed": 0
+  },
+  "_seq_no": 7,
+  "_primary_term": 2
+}
+```
+
+요청이 성공했다.
+
+```
+GET dept/_mapping
+```
+
+인덱스 정보를 조회 해보자.
+
+```
+{
+  "dept": {
+    "mappings": {
+      "properties": {
+        "deptName": {
+          "type": "keyword"
+        },
+        "gender": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "id": {
+          "type": "integer"
+        },
+        "studentName": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}
+```
+
+gender 가 자동으로 추가된 것을 확인할 수 있다.
+
+### 동적 매핑 해제
+
+매핑이 자동으로 확장되는 것을 막고자 한다면 아래와 같이 진행한다.
+
+```
+DELETE dept
+```
+
+기존 인덱스를 먼저 삭제한다.
+
+```
+PUT /dept
+{
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "deptName":{
+        "type":"keyword"
+        
+      },
+      "id":{
+        "type":"integer"
+      },
+      "studentName":{
+        "type":"text"
+      }
+    }
+  }
+}
+```
+
+`"dynamic": "stirct"` 속성을 추가해주었다.
+
+```
+POST /dept/_doc/1
+{
+  "deptName": "software",
+  "id": 202311111,
+  "studentName": "gildong",
+  "gender": "male"
+}
+```
+
+위 요청을 하였을 때 요청이 실패되는 것을 확인할 수 있다.
