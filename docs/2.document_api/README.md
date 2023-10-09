@@ -52,7 +52,7 @@ GET /dept/_doc/1
 
 지정한 id 로 조회 가능하다.
 
-### Update
+### PUT
 
 ```
 PUT /dept/_doc/1
@@ -268,7 +268,7 @@ POST /dept/_doc/1
 
 위 요청을 하였을 때 요청이 실패되는 것을 확인할 수 있다.
 
-### Delete
+### Delete API
 
 ```
 DELETE /dept/_doc/1
@@ -290,3 +290,34 @@ POST /dept/_delete_by_query
 ```
 
 json 형식의 쿼리를 통하여 문서의 내용을 찾아서 삭제할 수 있다.
+
+### Update API
+
+```
+POST /dept/_doc/1
+{
+  "deptName": "software",
+  "id": 202312345,
+  "studentName": "gildong"
+}
+```
+
+먼저 위 문서를 다시 생성해준다.
+
+```
+POST /dept/_update/1
+{
+  "script" : {
+    "source": "ctx._source.studentName = params.newName",
+    "lang": "painless",
+    "params" : {
+      "newName" : "minsu"
+    }
+  }
+}
+```
+
+여기서는 source, params 만 살펴보면 되는데
+source 는 RDBMS 에서 where 조건과 비슷한 역할을 하고, params 는 where 조건에 대입될 값과 유사하다.
+
+### Bulk API
