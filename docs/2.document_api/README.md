@@ -267,3 +267,26 @@ POST /dept/_doc/1
 ```
 
 위 요청을 하였을 때 요청이 실패되는 것을 확인할 수 있다.
+
+### Delete
+
+```
+DELETE /dept/_doc/1
+```
+
+문법은 다른 메소드와 동일하다.
+
+#### Delete by query
+
+```
+POST /dept/_delete_by_query
+{
+  "query": {
+    "match": {
+      "studentName": "gildong"
+    }
+  }
+}
+```
+
+json 형식의 쿼리를 통하여 문서의 내용을 찾아서 삭제할 수 있다.
