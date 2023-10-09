@@ -115,6 +115,8 @@ elasticsearch 에서는 일반적으로 id 값이 이미 존재하는 경우에�
 
 #### op_type 사용
 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html
+
 ```
 PUT dept/_doc/1?op_type=create
 {
