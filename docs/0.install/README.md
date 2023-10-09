@@ -14,14 +14,6 @@ sudo apt install default-jdk
 java -version
 ```
 
-# curl
-
-설치
-
-```
-sudo apt install curl
-```
-
 # elasticsearch
 
 설치
@@ -57,6 +49,14 @@ sudo systemctl start kibana
 ```
 
 접속 : browser - http://localhost:5601
+
+# curl
+
+설치
+
+```
+sudo apt install curl
+```
 
 # 트러블슈팅
 
