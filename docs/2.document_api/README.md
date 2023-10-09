@@ -127,3 +127,27 @@ PUT dept/_doc/1?op_type=create
 ```
 
 op_type 을 지정해주면 result 값을 create 만 나올 수 있게 강제한다.
+
+```
+{
+  "error": {
+    "root_cause": [
+      {
+        "type": "version_conflict_engine_exception",
+        "reason": "[1]: version conflict, document already exists (current version [4])",
+        "index_uuid": "Q0iX5rh4RAum7TfTLZ59dw",
+        "shard": "0",
+        "index": "dept"
+      }
+    ],
+    "type": "version_conflict_engine_exception",
+    "reason": "[1]: version conflict, document already exists (current version [4])",
+    "index_uuid": "Q0iX5rh4RAum7TfTLZ59dw",
+    "shard": "0",
+    "index": "dept"
+  },
+  "status": 409
+}
+```
+
+이미 존재하는 문서에 대해 자동으로 update 하는 것을 방지한다.
