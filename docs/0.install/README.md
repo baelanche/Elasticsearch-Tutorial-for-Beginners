@@ -66,7 +66,7 @@ sudo apt install curl
 sudo vi /etc/elasticsearch/elasticsearch.yml
 ```
 
-```
+```bash
 # Enable security features
 xpack.security.enabled: false
 
