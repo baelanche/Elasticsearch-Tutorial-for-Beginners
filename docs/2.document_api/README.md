@@ -321,3 +321,17 @@ POST /dept/_update/1
 source 는 RDBMS 에서 where 조건과 비슷한 역할을 하고, params 는 where 조건에 대입될 값과 유사하다.
 
 ### Bulk API
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+
+```
+POST _bulk
+
+{ "index" : { "_index" : "dept", "_id" : "1" } }
+{ "studentName" : "gildong" }
+{ "delete" : { "_index" : "dept", "_id" : "2" } }
+{ "create" : { "_index" : "dept", "_id" : "3" } }
+{ "studentName" : "chulsu" }
+{ "update" : {"_id" : "1", "_index" : "dept"} }
+{ "doc" : {"deptName" : "English"} }
+```
