@@ -326,7 +326,6 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
 
 ```
 POST _bulk
-
 { "index" : { "_index" : "dept", "_id" : "1" } }
 { "studentName" : "gildong" }
 { "delete" : { "_index" : "dept", "_id" : "2" } }
@@ -334,4 +333,10 @@ POST _bulk
 { "studentName" : "chulsu" }
 { "update" : {"_id" : "1", "_index" : "dept"} }
 { "doc" : {"deptName" : "English"} }
+```
+
+```
+GET /dept/_doc/1
+GET /dept/_doc/2
+GET /dept/_doc/3
 ```
