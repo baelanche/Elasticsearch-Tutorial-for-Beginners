@@ -48,15 +48,9 @@ sudo systemctl enable kibana
 sudo systemctl start kibana
 ```
 
-접속 : browser - http://localhost:5601
+접속
 
-# curl
-
-설치
-
-```
-sudo apt install curl
-```
+browser - `http://localhost:5601`
 
 # 트러블슈팅
 
