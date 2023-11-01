@@ -2,7 +2,7 @@
 
 <br/>
 
-1 - 인덱스 생성
+#### 1 - 인덱스 생성
 
 ```json
 PUT /dept
@@ -10,7 +10,7 @@ PUT /dept
 
 <br/>
 
-2 - 인덱스 조회
+#### 2 - 인덱스 조회
 
 ```json
 GET /dept
@@ -18,7 +18,7 @@ GET /dept
 
 <br/>
 
-3 - 인덱스 삭제
+#### 3 - 인덱스 삭제
 
 ```json
 DELETE /dept
@@ -26,7 +26,7 @@ DELETE /dept
 
 <br/>
 
-4 - 인덱스 생성(매핑)
+#### 4 - 인덱스 생성(매핑)
 
 ```json
 PUT /dept
@@ -50,7 +50,7 @@ PUT /dept
 
 <br/>
 
-5 - 인덱스 조회
+#### 5 - 인덱스 조회
 
 ```json
 GET /dept
@@ -58,7 +58,7 @@ GET /dept
 
 <br/>
 
-6 - 매핑 수정
+#### 6 - 매핑 수정
 
 ```json
 PUT /dept/_mapping
@@ -73,7 +73,7 @@ PUT /dept/_mapping
 
 <br/>
 
-7 - 인덱스 조회(매핑)
+#### 7 - 인덱스 조회(매핑)
 
 ```json
 GET /dept/_mapping
