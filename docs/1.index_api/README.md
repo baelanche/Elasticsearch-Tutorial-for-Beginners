@@ -1,22 +1,32 @@
-1
+## [Reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html)
+
+<br/>
+
+1 인덱스 생성
 
 ```
 PUT /dept
 ```
 
-2
+<br/>
+
+2 인덱스 조회
 
 ```
 GET /dept
 ```
 
-3
+<br/>
+
+3 인덱스 삭제
 
 ```
 DELETE /dept
 ```
 
-4
+<br/>
+
+4 인덱스 생성 - 매핑
 
 ```
 PUT /dept
@@ -38,13 +48,17 @@ PUT /dept
 }
 ```
 
-5
+<br/>
+
+5 인덱스 조회
 
 ```
 GET /dept
 ```
 
-6
+<br/>
+
+6 인덱스 조회 - 매핑
 
 ```
 GET /dept/_mapping
