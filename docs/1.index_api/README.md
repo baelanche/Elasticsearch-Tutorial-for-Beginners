@@ -4,7 +4,7 @@
 
 1 인덱스 생성
 
-```
+```json
 PUT /dept
 ```
 
@@ -12,7 +12,7 @@ PUT /dept
 
 2 인덱스 조회
 
-```
+```json
 GET /dept
 ```
 
@@ -20,7 +20,7 @@ GET /dept
 
 3 인덱스 삭제
 
-```
+```json
 DELETE /dept
 ```
 
@@ -28,7 +28,7 @@ DELETE /dept
 
 4 인덱스 생성 - 매핑
 
-```
+```json
 PUT /dept
 {
   "mappings": {
@@ -40,8 +40,8 @@ PUT /dept
       "id":{
         "type":"integer"
       },
-      "studentName":{
-        "type":"text"
+      "studentName": {
+        "type": "keyword"
       }
     }
   }
@@ -52,14 +52,29 @@ PUT /dept
 
 5 인덱스 조회
 
-```
+```json
 GET /dept
 ```
 
 <br/>
 
-6 인덱스 조회 - 매핑
+6 매핑 수정
 
+```json
+PUT /dept/_mapping
+{
+  "properties": {
+    "studentName": {
+      "type": "text"
+    }
+  }
+}
 ```
+
+<br/>
+
+7 인덱스 조회 - 매핑
+
+```json
 GET /dept/_mapping
 ```
