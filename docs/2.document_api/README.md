@@ -1,6 +1,10 @@
-### id 지정 없이 문서 생성
+## [Reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html)
 
-```
+<br/>
+
+#### 1 - id 지정 없이 문서 생성
+
+```json
 POST /dept/_doc/
 {
   "deptName": "software",
@@ -9,9 +13,9 @@ POST /dept/_doc/
 }
 ```
 
-response :
+Response:
 
-```
+```json
 {
   "_index": "dept",
   "_id": <_id>,
@@ -29,15 +33,17 @@ response :
 
 id 가 랜덤으로 생성된다.
 
-```
+```json
 GET /dept/_doc/<_id>
 ```
 
 조회 할 때는 랜덤으로 부여된 id 를 통해 조회한다.
 
-### id 지정하여 문서 생성
+<br/>
 
-```
+#### 2 - id 지정하여 문서 생성
+
+```json
 POST /dept/_doc/1
 {
   "deptName": "software",
@@ -46,11 +52,13 @@ POST /dept/_doc/1
 }
 ```
 
-```
+```json
 GET /dept/_doc/1
 ```
 
 지정한 id 로 조회 가능하다.
+
+<br/>
 
 ### PUT
 
