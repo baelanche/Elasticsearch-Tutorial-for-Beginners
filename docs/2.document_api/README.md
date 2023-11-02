@@ -176,7 +176,7 @@ index 생성할 때 기존에 없던 gender 매핑을 추가했다.
 
 Response :
 
-```
+```json
 {
   "_index": "dept",
   "_id": "2",
@@ -194,13 +194,13 @@ Response :
 
 요청이 성공했다.
 
-```
+```json
 GET /dept/_mapping
 ```
 
 인덱스 정보를 조회 해보자.
 
-```
+```json
 {
   "dept": {
     "mappings": {
@@ -332,7 +332,7 @@ source 는 RDBMS 에서 where 조건과 비슷한 역할을 하고, params 는 w
 한번에 여러번의 요청을 수행할 수 있다.  
 요청 도중에 오류가 발생해도 롤백과 같은 방법을 취할 수 없다.
 
-```
+```json
 POST _bulk
 { "index" : { "_index" : "dept", "_id" : "1" } }
 { "studentName" : "gildong" }
@@ -343,7 +343,7 @@ POST _bulk
 { "doc" : {"deptName" : "English"} }
 ```
 
-```
+```json
 GET /dept/_doc/1
 GET /dept/_doc/2
 GET /dept/_doc/3
