@@ -2,7 +2,7 @@
 
 <br/>
 
-#### 1 - id 지정 없이 문서 생성
+### 1 - id 지정 없이 문서 생성
 
 ```json
 POST /dept/_doc/
@@ -41,7 +41,7 @@ GET /dept/_doc/<_id>
 
 <br/>
 
-#### 2 - id 지정하여 문서 생성
+### 2 - id 지정하여 문서 생성
 
 ```json
 POST /dept/_doc/1
@@ -60,18 +60,18 @@ GET /dept/_doc/1
 
 <br/>
 
-### PUT
+### 3 - 문서 생성/수정
 
-```
+```json
 PUT /dept/_doc/1
 {
   "id": 202311111
 }
 ```
 
-response :
+Response:
 
-```
+```json
 {
   "_index": "dept",
   "_id": "1",
@@ -89,9 +89,9 @@ response :
 
 _version 값이 1 증가하였다.
 
-### 
+<br/>
 
-```
+```json
 POST /dept/_doc/1
 {
   "deptName": "software",
@@ -100,9 +100,9 @@ POST /dept/_doc/1
 }
 ```
 
-위에서 썼던 api 를 다시 요청해보자.
+POST 메소드를 호출해보자.
 
-```
+```json
 {
   "_index": "dept",
   "_id": "1",
@@ -118,14 +118,14 @@ POST /dept/_doc/1
 }
 ```
 
-POST 요청을 했는데 _version 값이 올라간 것을 확인할 수 있다.
-elasticsearch 에서는 일반적으로 id 값이 이미 존재하는 경우에는 update 작업을 하고, id 값이 없을 경우에는 create 작업을 한다.
+_version 값이 올라간 것을 확인할 수 있다.  
+elasticsearch 에서는 일반적으로 id 값이 이미 존재하는 경우에는 update 작업을 하고, id 값이 없을 경우에는 create 작업을 하기 때문이다.
 
-#### op_type 사용
+<br/>
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html
+### 3.2 - [op_type](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html)
 
-```
+```json
 PUT /dept/_doc/1?op_type=create
 {
   "deptName": "software",
@@ -134,9 +134,11 @@ PUT /dept/_doc/1?op_type=create
 }
 ```
 
-op_type 을 지정해주면 result 값을 create 만 나올 수 있게 강제한다.
+op_type=create 를 통해 이미 존재하는 문서에 대한 update 를 방지할 수 있다.
 
-```
+Response:
+
+```json
 {
   "error": {
     "root_cause": [
@@ -158,11 +160,9 @@ op_type 을 지정해주면 result 값을 create 만 나올 수 있게 강제한
 }
 ```
 
-이미 존재하는 문서에 대해 자동으로 update 하는 것을 방지한다.
+### 4 - 존재하지 않는 mapping 선언
 
-### 존재하지 않는 mapping 선언
-
-```
+```json
 POST /dept/_doc/2
 {
   "deptName": "software",
@@ -172,9 +172,9 @@ POST /dept/_doc/2
 }
 ```
 
-index 생성할 때 지정하지 않았던 gender 매핑을 추가했다.
+index 생성할 때 기존에 없던 gender 매핑을 추가했다.
 
-response :
+Response :
 
 ```
 {
@@ -229,43 +229,36 @@ GET /dept/_mapping
 }
 ```
 
-gender 가 자동으로 추가된 것을 확인할 수 있다.
+gender 매핑이 자동으로 추가된 것을 확인할 수 있다.
 
-### 동적 매핑 해제
+<br/>
 
-매핑이 자동으로 확장되는 것을 막고자 한다면 아래와 같이 진행한다.
+### 4.2 - 동적 매핑 해제
 
-```
-DELETE /dept
-```
-
-기존 인덱스를 먼저 삭제한다.
-
-```
-PUT /dept
+```json
+PUT /dept-static
 {
   "mappings": {
     "dynamic": "strict",
     "properties": {
-      "deptName":{
-        "type":"keyword"
-        
+      "deptName": {
+        "type": "keyword"
       },
-      "id":{
-        "type":"integer"
+      "id": {
+        "type": "integer"
       },
-      "studentName":{
-        "type":"text"
+      "studentName": {
+        "type": "text"
       }
     }
   }
 }
 ```
 
-`"dynamic": "stirct"` 속성을 추가해주었다.
+`"dynamic": "stirct"` 속성을 추가한다.
 
-```
-POST /dept/_doc/1
+```json
+POST /dept-static/_doc/1
 {
   "deptName": "software",
   "id": 202311111,
@@ -274,19 +267,21 @@ POST /dept/_doc/1
 }
 ```
 
-위 요청을 하였을 때 요청이 실패되는 것을 확인할 수 있다.
+위 요청을 하였을 때 요청이 실패하는 것을 확인할 수 있다.
 
-### Delete API
+<br/>
 
-```
+### 5 - 문서 삭제
+
+```json
 DELETE /dept/_doc/1
 ```
 
-문법은 다른 메소드와 동일하다.
+<br/>
 
-#### Delete by query
+### 5.2 - 문서 삭제(쿼리)
 
-```
+```json
 POST /dept/_delete_by_query
 {
   "query": {
@@ -297,11 +292,13 @@ POST /dept/_delete_by_query
 }
 ```
 
-json 형식의 쿼리를 통하여 문서의 내용을 찾아서 삭제할 수 있다.
+json 형식의 쿼리를 통하여 문서의 내용을 비교하여 삭제할 수 있다.
 
-### Update API
+<br/>
 
-```
+### 6 - 문서 수정(쿼리)
+
+```json
 POST /dept/_doc/1
 {
   "deptName": "software",
@@ -310,9 +307,9 @@ POST /dept/_doc/1
 }
 ```
 
-먼저 위 문서를 다시 생성해준다.
+문서를 다시 생성해준다.
 
-```
+```json
 POST /dept/_update/1
 {
   "script" : {
@@ -328,9 +325,12 @@ POST /dept/_update/1
 여기서는 source, params 만 살펴보면 되는데
 source 는 RDBMS 에서 where 조건과 비슷한 역할을 하고, params 는 where 조건에 대입될 값과 유사하다.
 
-### Bulk API
+<br/>
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+## [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)
+
+한번에 여러번의 요청을 수행할 수 있다.  
+요청 도중에 오류가 발생해도 롤백과 같은 방법을 취할 수 없다.
 
 ```
 POST _bulk
