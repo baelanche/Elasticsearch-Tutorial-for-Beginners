@@ -1,0 +1,40 @@
+{ "index" : { "_index" : "dept_search", "_id" : "1" } }
+{"deptName": "software", "id": 202300001, "studentName": "stu01"}
+{ "index" : { "_index" : "dept_search", "_id" : "2" } }
+{"deptName": "software", "id": 202300002, "studentName": "stu02"}
+{ "index" : { "_index" : "dept_search", "_id" : "3" } }
+{"deptName": "software", "id": 202300003, "studentName": "stu03"}
+{ "index" : { "_index" : "dept_search", "_id" : "4" } }
+{"deptName": "software", "id": 202300004, "studentName": "stu04"}
+{ "index" : { "_index" : "dept_search", "_id" : "5" } }
+{"deptName": "software", "id": 202300005, "studentName": "stu05"}
+{ "index" : { "_index" : "dept_search", "_id" : "6" } }
+{"deptName": "korean", "id": 202300006, "studentName": "stu06"}
+{ "index" : { "_index" : "dept_search", "_id" : "7" } }
+{"deptName": "software", "id": 202300007, "studentName": "stu07"}
+{ "index" : { "_index" : "dept_search", "_id" : "8" } }
+{"deptName": "software", "id": 202300008, "studentName": "stu08"}
+{ "index" : { "_index" : "dept_search", "_id" : "9" } }
+{"deptName": "software", "id": 202300009, "studentName": "s t u09"}
+{ "index" : { "_index" : "dept_search", "_id" : "10" } }
+{"deptName": "software", "id": 202300010, "studentName": "stu10"}
+{ "index" : { "_index" : "dept_search", "_id" : "11" } }
+{"deptName": "software", "id": 202300011, "studentName": "stu 11"}
+{ "index" : { "_index" : "dept_search", "_id" : "12" } }
+{"deptName": "software", "id": 202300012, "studentName": "stu12"}
+{ "index" : { "_index" : "dept_search", "_id" : "13" } }
+{"deptName": "financial engineering", "id": 202300013, "studentName": "stu13"}
+{ "index" : { "_index" : "dept_search", "_id" : "14" } }
+{"deptName": "software", "id": 202300014, "studentName": "stu14"}
+{ "index" : { "_index" : "dept_search", "_id" : "15" } }
+{"deptName": "software", "id": 202300015, "studentName": "stu15"}
+{ "index" : { "_index" : "dept_search", "_id" : "16" } }
+{"deptName": "software", "id": 202300016, "studentName": "stu16"}
+{ "index" : { "_index" : "dept_search", "_id" : "17" } }
+{"deptName": "software", "id": 202300017, "studentName": "stu17"}
+{ "index" : { "_index" : "dept_search", "_id" : "18" } }
+{"deptName": "english", "id": 202300018, "studentName": "stu18"}
+{ "index" : { "_index" : "dept_search", "_id" : "19" } }
+{"deptName": "software", "id": 202300019, "studentName": "stu19"}
+{ "index" : { "_index" : "dept_search", "_id" : "20" } }
+{"deptName": "digital media", "id": 202300020, "studentName": "stu20"}
