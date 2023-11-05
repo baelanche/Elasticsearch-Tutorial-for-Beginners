@@ -327,7 +327,7 @@ source 는 RDBMS 에서 where 조건과 비슷한 역할을 하고, params 는 w
 
 <br/>
 
-## [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)
+## 7 - [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)
 
 한번에 여러번의 요청을 수행할 수 있다.  
 요청 도중에 오류가 발생해도 롤백과 같은 방법을 취할 수 없다.
@@ -347,4 +347,10 @@ POST _bulk
 GET /dept/_doc/1
 GET /dept/_doc/2
 GET /dept/_doc/3
+```
+
+## 7.2 - json 파일을 삽입하기
+
+```
+curl -X POST http://localhost:9200/_bulk -H 'Content-Type: application/json' --data-binary @dept_search.json
 ```
