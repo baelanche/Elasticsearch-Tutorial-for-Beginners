@@ -4,7 +4,12 @@
 
 ```
 sudo apt-get update
+```
+```
 sudo apt install default-jre
+```
+
+```
 sudo apt install default-jdk
 ```
 
@@ -20,8 +25,17 @@ java -version
 
 ```
 curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+```
+
+```
 echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+```
+
+```
 sudo apt update
+```
+
+```
 sudo apt install elasticsearch
 ```
 
@@ -29,8 +43,14 @@ sudo apt install elasticsearch
 
 ```
 sudo systemctl enable elasticsearch
+```
+
+```
 sudo systemctl start elasticsearch
-curl -X GET localhost:9200
+```
+
+```
+curl -X GET http://localhost:9200
 ```
 
 # kibana
@@ -45,6 +65,9 @@ sudo apt install kibana
 
 ```
 sudo systemctl enable kibana
+```
+
+```
 sudo systemctl start kibana
 ```
 
