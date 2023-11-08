@@ -83,3 +83,33 @@ cluster.initial_master_nodes: ["USER"]
 ```
 
 true 로 되어있는 4개 부분을 false 로 바꾼다.
+
+# +
+
+## curl
+
+```
+sudo apt install curl
+```
+
+## Vim edit error
+
+`sudo apt-get install vim-gui-common`  
+`sudo apt-get install vim-runtime`  
+`vim ~/.vimrc`
+```
+" ~/.vimrc
+
+set number
+set tabstop=4
+set ignorecase
+set hlsearch
+set fileencodings=utf-8,euc-kr
+set bs=indent,eol,start
+set ruler
+set title
+set showmatch
+set nowrap
+set wmnu
+syntax on
+```
