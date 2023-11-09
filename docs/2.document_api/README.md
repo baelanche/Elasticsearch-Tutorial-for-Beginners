@@ -343,13 +343,33 @@ POST _bulk
 { "doc" : {"deptName" : "English"} }
 ```
 
+## 7.2 Multi Get
+
 ```json
 GET /dept/_doc/1
 GET /dept/_doc/2
 GET /dept/_doc/3
 ```
 
-## 7.2 - json 파일을 삽입하기
+```json
+GET /dept/_mget
+{
+  "docs": [
+    {
+      "_id": "1"
+    },
+    {
+      "_id": "2"
+    },
+    {
+      "_id": "3"
+    },
+  ]
+}
+```
+
+
+## 7.3 - json 파일을 삽입하기
 
 ```
 curl -X POST http://localhost:9200/_bulk -H 'Content-Type: application/json' --data-binary @dept_search.json
