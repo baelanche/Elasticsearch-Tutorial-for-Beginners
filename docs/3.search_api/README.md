@@ -105,7 +105,7 @@ POST dept_search/_search
 
 #### 범위 검색
 
-```
+```json
 POST dept_search/_search
 {
   "query": {
@@ -123,3 +123,73 @@ POST dept_search/_search
 > gt : >  
 > lte : <=  
 > gte : >=
+
+#### match_all
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+```json
+POST dept_search/_search
+```
+
+모든 문서 검색
+
+#### match
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "match": {
+      "deptName": "English"
+    }
+  }
+}
+```
+
+형태소 분석을 통하여 용어를 구분한 후 검색
+
+#### multi match
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "software",
+      "fields": ["deptName", "studentName"]
+    }
+  }
+}
+```
+
+#### multi index search
+
+```json
+POST dept,dept_search/_search
+{
+  "query": {
+    "term": {
+      "deptName": "English"
+    }
+  }
+}
+```
+
+```json
+POST dept,dept_search/_search
+{
+  "query": {
+    "match": {
+      "deptName": "English"
+    }
+  }
+}
+```
