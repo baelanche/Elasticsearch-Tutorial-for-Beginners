@@ -119,7 +119,7 @@ POST dept_search/_search
 }
 ```
 
-> lt : <
-> gt : >
-> lte : <=
+> lt : <  
+> gt : >  
+> lte : <=  
 > gte : >=
