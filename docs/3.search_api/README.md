@@ -54,6 +54,8 @@ Query DSL 이라 불리는 문법으로 json 형태의 쿼리를 작성한다.
 
 ### 3 - Query DSL
 
+#### term
+
 ```json
 POST dept_search/_search
 {
@@ -67,7 +69,7 @@ POST dept_search/_search
 
 > term : 정확히 일치하는 용어를 찾는다. (형태소 분석을 하지 않음)
 
-#### 정렬
+#### sort
 
 ```json
 POST dept_search/_search
@@ -85,7 +87,7 @@ POST dept_search/_search
 }
 ```
 
-#### 여러 번의 정렬
+#### multi sort
 
 ```json
 POST dept_search/_search
@@ -103,7 +105,7 @@ POST dept_search/_search
 }
 ```
 
-#### 범위 검색
+#### range
 
 ```json
 POST dept_search/_search
