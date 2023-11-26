@@ -195,3 +195,80 @@ POST dept,dept_search/_search
   }
 }
 ```
+
+#### bool
+
+```json
+POST dept_search/_search
+{
+  "query":{
+    "bool":{
+      "must":[
+        {
+          "match":{
+            "studentName":"stu01"
+          }
+        },
+        {
+          "term":{
+            "deptName":"software"
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "term":{
+            "deptName": "korean"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+> must : 조건이 참일 경우 검색(=)  
+> must_not : 조건이 거짓일 경우 검색(!=)  
+> should : 하나 이상을 만족할 경우 검색(OR)  
+> filter : 조건을 포함할 경우 검색(IN), 점수 계산 하지 않음
+
+#### prefix
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "prefix": {
+      "deptName": "soft"
+    }
+  }
+}
+```
+
+접두어 검색
+
+#### exists
+
+```json
+POST dept/_search
+{
+  "query": {
+    "exists": {
+      "field": "id"
+    }
+  }
+}
+```
+
+```json
+POST dept/_search
+{
+  "query": {
+    "exists": {
+      "field": "deptName"
+    }
+  }
+}
+```
+
+필드가 존재하는 문서를 검색한다
