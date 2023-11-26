@@ -4,8 +4,20 @@
 
 ### 1 - URI Search
 
-```json
+```
 POST dept_search/_search?q=studentName:stu01
+```
+
+```
+"hits": [
+      {
+        ...
+
+        "_score": ..., // 문서의 점수
+
+        ...
+      }
+    ]
 ```
 
 > 자주 쓰는 명령어  
@@ -17,8 +29,8 @@ POST dept_search/_search?q=studentName:stu01
 
 <br/>
 
-```json
-POST dept_search/_serarch?q=studentName:* AND id:202300001&from=0&size=10
+```
+POST dept_search/_search?q=studentName:* AND id:202300001&from=0&size=10
 ```
 <br/>
 
@@ -35,3 +47,79 @@ POST dept_search/_search
   }
 }
 ```
+
+Query DSL 이라 불리는 문법으로 json 형태의 쿼리를 작성한다.
+
+<br/>
+
+### 3 - Query DSL
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "term": {
+      "studentName": "stu01"
+    }
+  }
+}
+```
+
+> term : 정확히 일치하는 용어를 찾는다. (형태소 분석을 하지 않음)
+
+#### 정렬
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "term": {
+      "deptName": "software"
+    }
+  },
+  "sort": {
+    "id": {
+      "order": "desc"
+    }
+  }
+}
+```
+
+#### 여러 번의 정렬
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "term": {
+      "deptName": "software"
+    }
+  },
+  "sort": {
+    "score": {
+      "order": "desc"
+    }
+  }
+}
+```
+
+#### 범위 검색
+
+```
+POST dept_search/_search
+{
+  "query": {
+    "range": {
+      "id": {
+        "gte": "202300000",
+        "lte": "202300005"
+      }
+    }
+  }
+}
+```
+
+> lt : <
+> gt : >
+> lte : <=
+> gte : >=
