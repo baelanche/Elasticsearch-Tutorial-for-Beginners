@@ -316,3 +316,24 @@ GET dept_search/_msearch
 {"index": "dept_search"}
 {"query" : {"match" : { "deptName": "software"}}}
 ```
+
+#### highlight
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "match": {
+      "deptName": {
+        "query": "software"
+      }
+    }
+  },
+  "highlight": {
+    "fields": {
+      "deptName": {}
+    }
+  }
+}
+```
+
