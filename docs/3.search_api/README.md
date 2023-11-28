@@ -232,6 +232,34 @@ POST dept_search/_search
 > should : 하나 이상을 만족할 경우 검색(OR)  
 > filter : 조건을 포함할 경우 검색(IN), 점수 계산 하지 않음
 
+#### wildcard
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "wildcard": {
+      "studentName": "stu0?"
+    }
+  }
+}
+```
+
+```json
+POST dept_search/_search
+{
+  "query": {
+    "wildcard": {
+      "deptName": "soft*"
+    }
+  }
+}
+```
+
+> 형태소 분석을 하지 않음  
+> `?` : 한 글자에 대한 와일드카드  
+> `*` : 문자 길이와 상관없이 검색
+
 #### prefix
 
 ```json
@@ -272,3 +300,19 @@ POST dept/_search
 ```
 
 필드가 존재하는 문서를 검색한다
+
+#### count
+
+```
+POST dept_search/_count?deptName:software
+```
+
+#### multi search
+
+```json
+GET dept_search/_msearch
+{"index": "dept" }
+{"query" : {"match_all" : {}}}
+{"index": "dept_search"}
+{"query" : {"match" : { "deptName": "software"}}}
+```
