@@ -22,7 +22,7 @@ POST dept_search/_search?q=studentName:stu01
 
 > 자주 쓰는 명령어  
 > `q` : 검색을 수행할 쿼리  
-> `df` : 쿼리에 필드를 지정하지 않았을 경우 기본값  
+> `analyze_wildcard` : 와일드카드의 활성화 여부 지정(default: false)  
 > `sort` : 검색 결과의 정렬 필드  
 > `from` : 검색을 시작할 문서의 위치  
 > `size` : 검색 결과 개수
