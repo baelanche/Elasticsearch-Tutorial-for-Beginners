@@ -100,6 +100,9 @@ POST dept_search/_search
   "sort": {
     "score": {
       "order": "desc"
+    },
+    "id": {
+      "order": "desc"
     }
   }
 }
