@@ -47,6 +47,99 @@ GET <index>/_search?size=0
 }
 ```
 
+```
+GET <index>/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": "<field>"
+      }
+    }
+  },
+  "aggs": {
+    "<aggs_name>": {
+      "sum": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
+##### 집계 결과 스크립트로 조작하기
+
+```
+GET <index>/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": "<field>"
+      }
+    }
+  },
+  "aggs": {
+    "<aggs_name>": {
+      "sum": {
+        "script": {
+          "lang": "painless",
+          "source": "<field & param>",
+          "params": {
+            "<param_name": "<value>"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### avg
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "avg": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
+#### min
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "min": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
+#### max
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "max": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
 <br/>
 
 ### 1.3 - 버킷 집계
