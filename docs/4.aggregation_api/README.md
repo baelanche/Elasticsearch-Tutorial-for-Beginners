@@ -140,6 +140,51 @@ GET <index>/_search?size=0
 }
 ```
 
+#### count
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "value_count": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
+#### stats
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "stats": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
+#### cardinality
+
+```
+GET <index>/_search?size=0
+{
+  "aggs": {
+    "<aggs_name>": {
+      "cardinality": {
+        "field": "<field>"
+      }
+    }
+  }
+}
+```
+
 <br/>
 
 ### 1.3 - 버킷 집계
