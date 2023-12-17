@@ -98,7 +98,7 @@ POST dept_search/_search
     }
   },
   "sort": {
-    "score": {
+    "_score": {
       "order": "desc"
     },
     "id": {
@@ -307,7 +307,7 @@ POST dept/_search
 #### count
 
 ```
-POST dept_search/_count?deptName:software
+POST dept_search/_count?q=deptName:software
 ```
 
 #### multi search
